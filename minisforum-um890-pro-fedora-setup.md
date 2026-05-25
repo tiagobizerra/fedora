@@ -112,6 +112,11 @@ Comprehensive post-installation layout tracking the setup parameters, developmen
   export GPG_TTY=\$(tty)
   ```
 
+- **Install GitHub CLI**
+```bash
+sudo dnf install gh
+gh auth login
+```
 ---
 
 ### Step 9: Cursor Editor Workspace
@@ -186,11 +191,45 @@ Comprehensive post-installation layout tracking the setup parameters, developmen
 ---
 
 ### Step 14: GNOME System Tweaks & Extension Architectures
-- **Universal Flatpak Hub Initialization:**
+
+#### 1. Universal Flatpak Hub Initialization
+- Enable the upstream Flathub repository to handle isolated desktop applications:
   ```bash
-  flatpak remote-add --if-not-exists flathub https://flathub.org
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   ```
-- **Extensions Tree Ecosystem:** Dash to Dock, AppIndicator Support, Clipboard Indicator, Vitals, Hot Corners Extended.
+- *Note:* Reboot the machine after initializing. The GNOME Software Center will automatically parse and display all available Flathub application catalogs. Upstream packages can also be browsed manually at `https://flathub.org`.
+
+#### 2. Core System Management Installation
+- Deploy the graphical extension controller dashboard and advanced desktop tweak utilities via the system package manager:
+  ```bash
+  sudo dnf install gnome-extensions-app gnome-tweaks -y
+  ```
+
+#### 3. Optimized Workstation Extensions Tree
+To configure the environment, visit `https://extensions.gnome.org` using Firefox, install the native browser extension connector, and activate the following core modules:
+
+- **Dash to Dock:** Replaces the default GNOME search overview taskbar with a persistent, highly configurable macOS-style application dock.
+- **AppIndicator and KStatusNotifierItem Support:** Restores background system tray icon support to the top menu bar (required for status indicators like Spotify, 1Password, and Docker).
+- **Clipboard Indicator:** Maintains a localized clipboard history clipboard buffer accessible directly from the main panel.
+- **Vitals:** Adds active hardware telemetry tracking (CPU load, RAM consumption, network speeds, and system temperatures) to the top bar.
+- **Hot Corners Extended:** Binds highly customizable multi-axis workspace switching and workflow actions to responsive screen edges.
+- **Night Light Slider:** Introduces precision mouse sliding controls over color temperatures and blue-light filtration profiles.
+- **ddterm:** Embedded dropdown terminal emulator assigned globally to the `Alt + X` hotkey (detailed in Step 5).
+
+#### 4. Advanced Desktop Adjustments (GNOME Tweaks)
+Launch the tool via the application view or terminal using `gnome-tweaks` to enforce parameters missing from default GNOME settings:
+- **Top Bar:** Explicitly enable weekday display and seconds display on the global clock.
+- **Fonts:** Adjust rendering configurations and assign preferred fallback system interface and monospace font profiles.
+- **Windows:** Rearrange titlebar button layouts, minimize window behaviors, and mouse focus policies.
+- **Startup Applications:** Manage secondary user application execution loops right at login initialization.
+- **Workspace Layout Optimization:** Disabled the default baseline taskbar, default workspace selectors, and hidden elements using the Extensions dashboard to maintain an uncluttered workspace.
+
+#### 5. Hardware Firmware Lifecycle Updates
+Refreshed the Linux Vendor Firmware Service (LVFS) database architecture tracks and flash security or performance patches directly to internal device storage chips:
+  ```bash
+  sudo fwupdmgr refresh
+  sudo fwupdmgr update
+  ```
 
 ---
 
@@ -229,6 +268,25 @@ Comprehensive post-installation layout tracking the setup parameters, developmen
 - **Guake / Yakuake / Kitty Dropdown Rejection:** Blocked due to installation failures on modern Python 3.14 layers or excessive dependency weight. Completely replaced by the streamlined GNOME extension `ddterm`.
 - **Keyboard Global Shortcut Layouts (Cmd+C / Cmd+V Remapping):** Abandoned system-wide software translation rules to avoid broken navigation nodes inside desktop window layers. Custom key combinations map special alphabetic variations and accents cleanly through local user tables (`~/.XCompose`), while baseline desktop actions remain on standard, stable Linux patterns (`Ctrl+C` / `Ctrl+V`).
 - **Apple Time Capsule Persistent Automation:** Systemd background unit configurations and native GNOME graphical autostart chains were discarded. Legacy SMBv1 requirements and interactive keyring credential requests under Wayland cause background freezes. The share was transitioned to a clean, custom manual script mapping track (`time-capsule`) located in `~/.local/bin/`.
+
+---
+
+### Step 17: Migrate Personal Files from Old White MacBook
+- **Strategy Selection:** Due to the age of the old white MacBook software engine, configuration files and application caches are too obsolete to migrate. Only raw, unprivileged personal data folders are transferred to ensure host environment stability.
+- **Migration Pipeline (Network Transfer Option):**
+  1. On the legacy macOS machine: Navigate to **System Preferences** -> **Sharing** and explicitly enable **File Sharing**.
+  2. On the Fedora Workstation: Open **Files** (Nautilus) -> **Other Locations** and target the hardware broadcast address directly using the machine hostname or internal network IP track:
+     `smb://macbook.local`
+  3. Authenticate with local user credentials and copy data segments over the local network infrastructure.
+- **Alternative Physical Pipeline (USB Backup Option):** 
+  - Mount an external USB mass storage drive on the legacy machine, dump files into localized folders, and re-mount on Fedora to drag data natively into home paths.
+- **Explicit Migration Targets:**
+  - `~/Documents` -> Transferred natively to user workspace folders.
+  - `~/Pictures` -> Transferred natively to user workspace folders.
+  - `~/Downloads` -> Manually audited prior to data sync to strip out historical system junk assets.
+- **Explicit Exclusions (Blocked Vectors):**
+  - `~/Library` -> Strictly excluded to prevent macOS-specific architecture contamination on Linux.
+  - Core system layout files and legacy binary properties.
 
 ---
 
